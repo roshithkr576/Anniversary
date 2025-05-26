@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Anniversary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Blurred full-page background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('bg.jpg') no-repeat center center/cover;
+      filter: blur(12px) brightness(0.6);
+      z-index: -1;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 20px;
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      text-align: center;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #ffdee9;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #fff7f9;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: 3px solid rgba(255, 192, 203, 0.6);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(255,192,203,0.4);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 192, 203, 0.6);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .close:hover {
+      color: #ff8fa3;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .gallery img {
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Anniversary 💖</h1>
+  <p>These are some of the unforgettable moments we’ve shared together.</p>
+
+  <div class="gallery">
+    <img src="your-photo1.jpg" alt="Photo 1">
+    <img src="your-photo2.jpg" alt="Photo 2">
+    <img src="your-photo3.jpg" alt="Photo 3">
+    <img src="your-photo4.jpg" alt="Photo 4">
+	<img src="your-photo5.jpg" alt="Photo 5">
+	<img src="your-photo6.jpg" alt="Photo 6">
+    <!-- Add more <img> tags here -->
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img id="modalImg" class="modal-content">
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const closeBtn = document.querySelector('.close');
+    const galleryImgs = document.querySelectorAll('.gallery img');
+
+    galleryImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
